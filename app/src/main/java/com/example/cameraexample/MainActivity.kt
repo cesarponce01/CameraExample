@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
 
         resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
                 result: ActivityResult ->
+            //Si la respuesta es afirmativa coge la foto y la poner en el imageView
             if (result.resultCode == Activity.RESULT_OK) {
                 var bitmapPhoto = result.data!!.extras!!.get("data") as Bitmap
                 imageViewPhoto.setImageBitmap(bitmapPhoto)
@@ -76,6 +77,7 @@ class MainActivity : AppCompatActivity() {
 
             }
         }
+        //Mantener el ciclo de vida para que se entere
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 }
